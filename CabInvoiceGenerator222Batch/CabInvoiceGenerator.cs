@@ -25,14 +25,14 @@ namespace CabInvoiceGenerator222Batch
                 return Math.Max(totalFare, ride.MINIMUM_FARE);
             }
         }
-        public double CalculateTotalFare(Ride[] rides)
+        public InvoiceSummary CalculateTotalFare(Ride[] rides)
         {
             double totalFare=0;
             foreach(Ride ride in rides)
             {
                 totalFare += CalculateTotalFare(ride);
             }
-            return totalFare;
+            return new InvoiceSummary(totalFare, rides.Length);
         }
     }
 }
